@@ -1,9 +1,16 @@
-
-def makePrime(n):
-    lista=[i for i in range(2,n+1)]
-    for i, k in enumerate(lista):
-        if i<=int(n**.5):
-            for j in lista[i+1:]:
-                if j % k == 0:
-                    lista.remove(j)
+def nprimos(n):
+    lista = []
+    i = 2
+    while n != 0:
+        for j in range(2, i):
+            if i%j == 0:
+                break
+        else:
+            lista.append(i)
+            n -= 1
+        i += 1
     return lista
+
+if __name__ == "__main__":
+    n = 10
+    print(nprimos(n))

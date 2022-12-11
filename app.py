@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, request, render_template
-from py.prime import makePrime
+from py.prime import nprimos
 #from py.galton import galtonboard
 
 app = Flask(__name__)
@@ -15,9 +15,9 @@ def index():
 def primos():
     if request.method == 'POST':
         n = request.form["num"]
-        return render_template("prime.html", list=makePrime(int(n)), title="First " + n + " prime numbers")
+        return render_template("prime.html", list=nprimos(int(n)), title="Los primeros " + n + " números primos")
     else:
-        return render_template("prime.html", list="", title="First prime numbers")
+        return render_template("prime.html", list="", title="Los primeros números primos")
 
 
 @app.route('/galton/', methods=["GET", "POST"])
@@ -29,4 +29,4 @@ def glaton():
         return render_template("galton.html", URL="")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=3000)
